@@ -52,7 +52,7 @@ CREATE TABLE Configuration(
     id_configuration INTEGER PRIMARY KEY,
     ouverture_focale float,
     temps_exposition float,
-    flash bool,
+    flash int, /*0 ou 1*/
     distance_focale float
 );
 
