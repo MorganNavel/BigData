@@ -152,7 +152,7 @@ CREATE TABLE Discussion(
 /*table des commentaires sur une discussion*/
 CREATE TABLE Commentaire(
     id_commentaire INTEGER PRIMARY KEY,
-    contenu VARCHAR(50) NOT NULL,
+    contenu VARCHAR(250) NOT NULL,
     id_discussion INTEGER,
     id_utilisateur INTEGER,
     FOREIGN KEY(id_commentaire) REFERENCES ContenuNumerique(id_contenu),
@@ -205,10 +205,11 @@ INSERT INTO ContenuNumerique(id_contenu) VALUES(2);
 INSERT INTO ContenuNumerique(id_contenu) VALUES(3);
 INSERT INTO ContenuNumerique(id_contenu) VALUES(4);
 
-INSERT INTO Photo(id_photo, resolution, date_photo, lieu, licence, id_utilisateur, id_appareil, id_configuration) VALUES(1, '1280x720', TO_DATE('2023-06-03'),'Montpellier','TousDroitsReserves', 1, 1, 1);
--- INSERT INTO Photo(id_photo, resolution, date_photo, lieu, licence, id_utilisateur, id_appareil, id_configuration) VALUES(2, '1280x720', '2023-08-03','Paris','UtilisationCommercialeAutorisee', 2, 2, 2);
--- INSERT INTO Photo(id_photo, resolution, date_photo, lieu, licence, id_utilisateur, id_appareil, id_configuration) VALUES(3, '1280x720', '2023-12-03','Los Angeles','ModificationImageAutorisee', 3, 2, 3);
--- INSERT INTO Photo(id_photo, resolution, date_photo, lieu, licence, id_utilisateur, id_appareil, id_configuration) VALUES(4, '1280x720', '2023-04-03','Incheon','TousDroitsReserves', 4, 3, 4);
+INSERT INTO Photo(id_photo, resolution, date_photo, lieu, licence, id_utilisateur, id_appareil, id_configuration) VALUES(1, '1280x720', TO_DATE('2023-06-03','YYYY-MM-DD'),'Montpellier','TousDroitsReserves', 1, 1, 1);
+INSERT INTO Photo(id_photo, resolution, date_photo, lieu, licence, id_utilisateur, id_appareil, id_configuration) VALUES(2, '1280x720', TO_DATE('2023-08-03','YYYY-MM-DD'),'Paris','UtilisationCommercialeAutorisee', 2, 2, 2);
+INSERT INTO Photo(id_photo, resolution, date_photo, lieu, licence, id_utilisateur, id_appareil, id_configuration) VALUES(3, '1280x720', TO_DATE('2023-12-03','YYYY-MM-DD'),'Los Angeles','ModificationImageAutorisee', 3, 2, 3);
+INSERT INTO Photo(id_photo, resolution, date_photo, lieu, licence, id_utilisateur, id_appareil, id_configuration) VALUES(4, '1280x720', TO_DATE('2023-04-03','YYYY-MM-DD'),'Incheon','TousDroitsReserves', 3, 3, 3);
+
 
 INSERT INTO Balise(id_balise) VALUES(1);
 INSERT INTO Balise(id_balise) VALUES(2);
@@ -271,7 +272,7 @@ SELECT * FROM Photo
 WHERE lieu = 'Montpellier';
 
 /*requete 2: les utilisateurs qui sont abonnés à un utilisateur et qui ont pris une photo avec un Canon*/
-SELECT * FROM Utilisateur
+SELECT Utilisateur.id_utilisateur,nom,prenom FROM Utilisateur
 JOIN Abonne ON Utilisateur.id_utilisateur = Abonne.id_utilisateur1
 JOIN Photo ON Abonne.id_utilisateur2 = Photo.id_utilisateur
 JOIN Appareil ON Photo.id_appareil = Appareil.id_appareil
@@ -286,11 +287,11 @@ JOIN Tag ON PhotoBalises.id_balise = Tag.id_tag
 WHERE Tag.tag = '#summer';
 
 /*requete 4: les photos les plus appréciées avec la licence de distribution ’tous droits réservés’.*/
-SELECT * FROM Photo
+SELECT Photo.id_photo FROM Photo
 JOIN PhotoCollection ON Photo.id_photo = PhotoCollection.id_photo
 JOIN Aimer ON Photo.id_photo = Aimer.id_photo
 WHERE Photo.licence LIKE 'TousDroitsReserves'
-GROUP BY Photo.id_photo
+GROUP BY Photo.id_photo,Photo.lieu
 HAVING COUNT(*) >= ALL (
     SELECT COUNT(*) FROM Photo P1
     JOIN Aimer ON P1.id_photo = Aimer.id_photo
@@ -300,7 +301,7 @@ HAVING COUNT(*) >= ALL (
 
 
 /*requete 5: les photos incluses dans le plus grande nombre de galeries*/
-SELECT * FROM Photo
+SELECT Photo.id_photo FROM Photo
 JOIN PhotoCollection ON Photo.id_photo = PhotoCollection.id_photo
 JOIN Galerie ON PhotoCollection.id_collection = Galerie.id_galerie
 GROUP BY Photo.id_photo

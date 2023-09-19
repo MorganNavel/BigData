@@ -1,25 +1,5 @@
 /*Creation de la base de données TP1*/
 
-/*suppression des tables si elles existent*/
-DROP TABLE IF EXISTS Appareil;
-DROP TABLE IF EXISTS Utilisateur;
-DROP TABLE IF EXISTS Abonne;
-DROP TABLE IF EXISTS Configuration;
-DROP TABLE IF EXISTS Collection;
-DROP TABLE IF EXISTS Album;
-DROP TABLE IF EXISTS Galerie;
-DROP TABLE IF EXISTS ContenuNumerique;
-DROP TABLE IF EXISTS PhotoBalises;
-DROP TABLE IF EXISTS Photo;
-DROP TABLE IF EXISTS Balise;
-DROP TABLE IF EXISTS Tag;
-DROP TABLE IF EXISTS MotCle;
-DROP TABLE IF EXISTS PhotoCollection;
-DROP TABLE IF EXISTS Aimer;
-DROP TABLE IF EXISTS Discussion;
-DROP TABLE IF EXISTS Commentaire;
-DROP TABLE IF EXISTS VUES
-
 /*creation des tables*/
 
 
@@ -50,11 +30,12 @@ CREATE TABLE Abonne(
 /*table des configurations*/
 CREATE TABLE Configuration(
     id_configuration INTEGER PRIMARY KEY,
-    ouverture_focale float,
-    temps_exposition float,
-    flash int, /*0 ou 1*/
-    distance_focale float
-);
+    ouverture_focale FLOAT,
+    temps_exposition FLOAT,
+    flash VARCHAR(1),
+    distance_focale float,
+    CONSTRAINT Check_flash CHECK(flash IN ('Y','N'))
+    );
 
 /*tables des Collections*/
 CREATE TABLE Collection(
@@ -63,12 +44,7 @@ CREATE TABLE Collection(
 
 
 /*table des Albums*/
-CREATE TABLE Album(
-    id_album INTEGER PRIMARY KEY,
-    id_utilisateur INTEGER,
-    FOREIGN KEY(id_album) REFERENCES Collection(id_collection),
-    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
-);
+
 
 /*table des Galeries*/
 CREATE TABLE Galerie(
@@ -76,7 +52,6 @@ CREATE TABLE Galerie(
     id_utilisateur INTEGER,
     FOREIGN KEY(id_galerie) REFERENCES Collection(id_collection),
     FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
-
 );
 
 /*table des contenus numériques*/
@@ -88,7 +63,7 @@ CREATE TABLE ContenuNumerique(
 CREATE TABLE Photo(
     id_photo INTEGER PRIMARY KEY,
     resolution VARCHAR(50),
-    date DATE NOT NULL,
+    date_photo DATE NOT NULL,
     lieu VARCHAR(50) NOT NULL,
     licence VARCHAR(50),
     id_utilisateur INTEGER,
@@ -156,10 +131,9 @@ CREATE TABLE Discussion(
 /*table des commentaires sur une discussion*/
 CREATE TABLE Commentaire(
     id_commentaire INTEGER PRIMARY KEY,
+    contenu VARCHAR(250) NOT NULL,
     id_discussion INTEGER,
-    contenu VARCHAR(50) NOT NULL,
     id_utilisateur INTEGER,
-    
     FOREIGN KEY(id_commentaire) REFERENCES ContenuNumerique(id_contenu),
     FOREIGN KEY(id_discussion) REFERENCES Discussion(id_discussion),
     FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
