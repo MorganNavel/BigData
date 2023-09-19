@@ -32,7 +32,7 @@ CREATE TABLE Configuration(
     id_configuration INTEGER PRIMARY KEY,
     ouverture_focale float,
     temps_exposition float,
-    flash int, /*0 ou 1*/
+    flash string, /*Y ou N*/
     distance_focale float
 );
 
@@ -68,7 +68,7 @@ CREATE TABLE ContenuNumerique(
 CREATE TABLE Photo(
     id_photo INTEGER PRIMARY KEY,
     resolution VARCHAR(50),
-    date DATE NOT NULL,
+    date_ DATE NOT NULL,
     lieu VARCHAR(50) NOT NULL,
     licence VARCHAR(50),
     id_utilisateur INTEGER,
