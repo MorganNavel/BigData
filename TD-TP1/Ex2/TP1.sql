@@ -205,10 +205,10 @@ INSERT INTO ContenuNumerique(id_contenu) VALUES(2);
 INSERT INTO ContenuNumerique(id_contenu) VALUES(3);
 INSERT INTO ContenuNumerique(id_contenu) VALUES(4);
 
-INSERT INTO Photo(id_photo, resolution, date_photo, lieu, licence, id_utilisateur, id_appareil, id_configuration) VALUES(1, '1280x720', '2023-06-03','Montpellier','TousDroitsReserves', 1, 1, 1);
-INSERT INTO Photo(id_photo, resolution, date_photo, lieu, licence, id_utilisateur, id_appareil, id_configuration) VALUES(2, '1280x720', '2023-08-03','Paris','UtilisationCommercialeAutorisee', 2, 2, 2);
-INSERT INTO Photo(id_photo, resolution, date_photo, lieu, licence, id_utilisateur, id_appareil, id_configuration) VALUES(3, '1280x720', '2023-012-03','Los Angeles','ModificationImageAutorisee', 3, 2, 3);
-INSERT INTO Photo(id_photo, resolution, date_photo, lieu, licence, id_utilisateur, id_appareil, id_configuration) VALUES(4, '1280x720', '2023-04-03','Incheon','TousDroitsReserves', 4, 3, 4);
+INSERT INTO Photo(id_photo, resolution, date_photo, lieu, licence, id_utilisateur, id_appareil, id_configuration) VALUES(1, '1280x720', TO_DATE('2023-06-03'),'Montpellier','TousDroitsReserves', 1, 1, 1);
+-- INSERT INTO Photo(id_photo, resolution, date_photo, lieu, licence, id_utilisateur, id_appareil, id_configuration) VALUES(2, '1280x720', '2023-08-03','Paris','UtilisationCommercialeAutorisee', 2, 2, 2);
+-- INSERT INTO Photo(id_photo, resolution, date_photo, lieu, licence, id_utilisateur, id_appareil, id_configuration) VALUES(3, '1280x720', '2023-12-03','Los Angeles','ModificationImageAutorisee', 3, 2, 3);
+-- INSERT INTO Photo(id_photo, resolution, date_photo, lieu, licence, id_utilisateur, id_appareil, id_configuration) VALUES(4, '1280x720', '2023-04-03','Incheon','TousDroitsReserves', 4, 3, 4);
 
 INSERT INTO Balise(id_balise) VALUES(1);
 INSERT INTO Balise(id_balise) VALUES(2);
