@@ -1,25 +1,5 @@
 /*Creation de la base de données TP1*/
 
-/*suppression des tables si elles existent*/
-DROP TABLE IF EXISTS Appareil;
-DROP TABLE IF EXISTS Utilisateur;
-DROP TABLE IF EXISTS Abonne;
-DROP TABLE IF EXISTS Configuration;
-DROP TABLE IF EXISTS Collection;
-DROP TABLE IF EXISTS Album;
-DROP TABLE IF EXISTS Galerie;
-DROP TABLE IF EXISTS ContenuNumerique;
-DROP TABLE IF EXISTS PhotoBalises;
-DROP TABLE IF EXISTS Photo;
-DROP TABLE IF EXISTS Balise;
-DROP TABLE IF EXISTS Tag;
-DROP TABLE IF EXISTS MotCle;
-DROP TABLE IF EXISTS PhotoCollection;
-DROP TABLE IF EXISTS Aimer;
-DROP TABLE IF EXISTS Discussion;
-DROP TABLE IF EXISTS Commentaire;
-DROP TABLE IF EXISTS VUES
-
 /*creation des tables*/
 
 
