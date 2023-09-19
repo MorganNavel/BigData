@@ -44,6 +44,12 @@ CREATE TABLE Collection(
 
 
 /*table des Albums*/
+CREATE TABLE Album(
+    id_album INTEGER PRIMARY KEY,
+    id_utilisateur INTEGER,
+    FOREIGN KEY(id_album) REFERENCES Collection(id_collection),
+    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
+);
 
 
 /*table des Galeries*/
