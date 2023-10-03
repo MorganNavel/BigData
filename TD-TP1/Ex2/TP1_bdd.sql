@@ -44,6 +44,12 @@ CREATE TABLE Collection(
 
 
 /*table des Albums*/
+CREATE TABLE Album(
+    id_album INTEGER PRIMARY KEY,
+    id_utilisateur INTEGER,
+    FOREIGN KEY(id_album) REFERENCES Collection(id_collection),
+    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
+);
 
 
 /*table des Galeries*/
@@ -139,5 +145,12 @@ CREATE TABLE Commentaire(
     FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
 );
 
+CREATE TABLE Vues(
+    id_photo INTEGER,
+    id_utilisateur INTEGER,
+    PRIMARY KEY(id_photo, id_utilisateur),
+    FOREIGN KEY(id_photo) REFERENCES Photo(id_photo),
+    FOREIGN KEY(id_utilisateur) REFERENCES Utilisateur(id_utilisateur)
+);
 
 /*fin de la création de la base de données*/

@@ -95,5 +95,11 @@ INSERT INTO Commentaire(id_commentaire, id_discussion, id_utilisateur, contenu) 
 INSERT INTO Commentaire(id_commentaire, id_discussion, id_utilisateur, contenu) VALUES(2, 2, 2, 'Magnifique !');
 INSERT INTO Commentaire(id_commentaire, id_discussion, id_utilisateur, contenu) VALUES(3, 1, 3, 'Complétement incohérente, je ne comprends pas commment cette photo a été prise. Travaillez votre cadrage ! ');
 
-
+INSERT INTO Vues(id_photo, id_utilisateur) VALUES(1, 1);
+INSERT INTO Vues(id_photo, id_utilisateur) VALUES(1, 2);
+INSERT INTO Vues(id_photo, id_utilisateur) VALUES(1, 3);
+INSERT INTO Vues(id_photo, id_utilisateur) VALUES(2, 1);
+INSERT INTO Vues(id_photo, id_utilisateur) VALUES(2, 4);
+INSERT INTO Vues(id_photo, id_utilisateur) VALUES(3, 1);
+INSERT INTO Vues(id_photo, id_utilisateur) VALUES(3, 3);
 /*fin de l'insertion des données*/
