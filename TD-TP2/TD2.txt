@@ -1,0 +1,62 @@
+Exercice 1:
+Q1) Affiche le nom des étudiants inscrits au module dont l'intitulé est 'EDBD'
+
+Q2)
+
+Arbre 1:
+
+
+Jointure IP et Module: On sait que Module est relié grâce une clef étrangère de IP donc on a au pire toutes les lignes de Module donc Taille(Module) soit 4200 lignes
+70 * 4200 = 294000
+Jointure avec Etudiants: On sait que on a en sorti 4200 lignes, Etudiants comporte 200 lignes, comme la clef primaire de de Etudiants est une clef étrangère dans l'autre table, donc le nombre de ligne est eviron égale à 4200
+4200*200 = 840 000
+Ensuite on restraint ces 4200 lignes à l'intitulé 'EDBD' sachant que 10% IP sont pour le module en question 4200*0.1 = 420 lignes
+4200*0.1 = 420
+
+COUT(E/S) = 294k + 4.2k + 840k + 4.2k + 4.2k + 420 = 1m147
+Arbre 2:
+
+
+Restriction sur les modules:
+Entrée: 70
+Sorti: 1/Card(module.intitulé) = 1/1 = 1 (y'a 1 seul et unique intitulé)
+Jointure :
+Entrée: 4200 *1 = 4200
+Sortie: 4200*0.1 = 420 (10% des inscriptions concerne le muodule 'EDBD')
+
+Jointure:
+Entrée: 420 * 200 =84 000
+Sortie: 420
+
+Cout(E/S) = ?
+
+
+Arbre 3:
+
+Jointure (module/etudiant):
+
+Entrée: 70*200 = 14 000
+Sortie: 14 000 (aucun lien donc produit cartésien)
+
+Jointure avec IP:
+
+Entrée: 14 000 * 4200 = 58 800 000
+Sortie: 4 200
+
+Restriction:
+Entrée: 4200
+Sortie: 420
+
+Cout(E/S) = 58 800 000 + 4200 + 420
+
+Q3) L'arbre 2 est le meilleur car le coût est le plus bas
+
+Exercice 2:
+
+Requête 1: 
+Affiche les responsables des modules commençant par 'HAI' où l'étudiant 'dupont' est inscrit pédagogiquement
+Requête 2:
+Affiche le nom des étudiants inscrits administrativement à la formation 'MASTER GL' et qui est inscrit pédagogiquement au module 'EDBD'
+
+
+
